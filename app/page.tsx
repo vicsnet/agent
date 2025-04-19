@@ -57,7 +57,8 @@ export default function Home() {
     };
   
     recognition.onerror = (event) => {
-      console.error("Recognition error:", event.error);
+      // console.error("Recognition error:", event.error);
+      console.error("Recognition error:", event.error, event);
     };
   
     recognition.onend = () => {
