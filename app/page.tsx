@@ -33,46 +33,85 @@ export default function Home() {
     await sendMessage(message);
   };
 
-  const handleRecording = () => {
-    console.log("🎤 handleRecording triggered");
+  // const handleRecording = () => {
+  //   console.log("🎤 handleRecording triggered");
   
+  //   const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+  //   if (!SpeechRecognition) {
+  //     console.error("SpeechRecognition is not supported in this browser.");
+  //     return;
+  //   }
+  
+  //   const recognition = new SpeechRecognition();
+  //   recognition.continuous = true; // Enable continuous recognition
+  //   recognition.lang = 'en-US';
+
+  
+  //   recognition.onstart = () => {
+  //     console.log("🎤 Recognition started");
+  //   };
+  
+  //   recognition.onresult = (event) => {
+  //     console.log("🎤 Recognition result received");
+  //     const transcript = event.results[0][0].transcript;
+  //     console.log("🎤 Transcript:", transcript);
+  //     sendMessage(transcript);
+  //   };
+  
+  //   recognition.onerror = (event) => {
+  //     // console.error("Recognition error:", event.error);
+  //     console.error("Recognition error:", event.error, event);
+  //   };
+  
+  //   recognition.onend = () => {
+  //     console.log("🎤 Recognition ended");
+  //     // Don't automatically restart
+  //   };
+  
+  //   recognition.start();
+  // };
+
+
+  const handleRecording = () => {
     const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
     if (!SpeechRecognition) {
-      console.error("SpeechRecognition is not supported in this browser.");
+      console.error("SpeechRecognition not supported.");
       return;
     }
   
     const recognition = new SpeechRecognition();
-    recognition.continuous = true; // Enable continuous recognition
+    recognition.lang = 'en-US';
   
     recognition.onstart = () => {
       console.log("🎤 Recognition started");
     };
   
     recognition.onresult = (event) => {
-      console.log("🎤 Recognition result received");
       const transcript = event.results[0][0].transcript;
       console.log("🎤 Transcript:", transcript);
       sendMessage(transcript);
     };
   
     recognition.onerror = (event) => {
-      // console.error("Recognition error:", event.error);
       console.error("Recognition error:", event.error, event);
     };
   
     recognition.onend = () => {
       console.log("🎤 Recognition ended");
-      // Don't automatically restart
     };
   
-    recognition.start();
+    // 🚨 Important: recognition.start() must be inside a user-initiated event
+    try {
+      recognition.start();
+    } catch (e) {
+      console.error("Recognition failed to start:", e);
+    }
   };
-
   return (
     <div className="flex flex-col flex-grow items-center justify-center text-black dark:text-white w-full h-full">
       <div className="w-full max-w-2xl h-[70vh] bg-white dark:bg-gray-800 shadow-lg rounded-lg p-4 flex flex-col">
         {/* Chat Messages */}
+        {input}
         <div className="flex-grow overflow-y-auto space-y-3 p-2">
           {messages.length === 0 ? (
             <p className="text-center text-gray-500">Start chatting with AgentKit...</p>
