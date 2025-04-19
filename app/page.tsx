@@ -33,6 +33,41 @@ export default function Home() {
     await sendMessage(message);
   };
 
+  const handleRecording = () => {
+    console.log("🎤 handleRecording triggered");
+  
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    if (!SpeechRecognition) {
+      console.error("SpeechRecognition is not supported in this browser.");
+      return;
+    }
+  
+    const recognition = new SpeechRecognition();
+    recognition.continuous = true; // Enable continuous recognition
+  
+    recognition.onstart = () => {
+      console.log("🎤 Recognition started");
+    };
+  
+    recognition.onresult = (event) => {
+      console.log("🎤 Recognition result received");
+      const transcript = event.results[0][0].transcript;
+      console.log("🎤 Transcript:", transcript);
+      sendMessage(transcript);
+    };
+  
+    recognition.onerror = (event) => {
+      console.error("Recognition error:", event.error);
+    };
+  
+    recognition.onend = () => {
+      console.log("🎤 Recognition ended");
+      // Don't automatically restart
+    };
+  
+    recognition.start();
+  };
+
   return (
     <div className="flex flex-col flex-grow items-center justify-center text-black dark:text-white w-full h-full">
       <div className="w-full max-w-2xl h-[70vh] bg-white dark:bg-gray-800 shadow-lg rounded-lg p-4 flex flex-col">
@@ -96,6 +131,15 @@ export default function Home() {
             disabled={isThinking}
           >
             Send
+          </button>
+          <button
+            onClick={handleRecording}
+            // onClick={isVoiceMode ? stopVoiceListening : startVoiceListening}
+            className={`px-6 py-2 rounded-full font-semibold transition-all  text-white shadow-md`}
+            // disabled={isThinking}
+          >
+            {/* {listening ? "🛑 Stop" : "🎙️ Voice"} */}
+            Start Recording
           </button>
         </div>
       </div>
