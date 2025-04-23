@@ -41,8 +41,8 @@ export async function createAgent(): Promise<ReturnType<typeof createReactAgent>
   }
 
   try {
-    const { agentkit, walletProvider } = await prepareAgentkitAndWalletProvider();
-
+    // const { agentkit, walletProvider } = await prepareAgentkitAndWalletProvider();
+    const { agentkit } = await prepareAgentkitAndWalletProvider();
     // Initialize LLM: https://platform.openai.com/docs/models#gpt-4o
     const llm = new ChatOpenAI({ model: "gpt-4o-mini" });
 
@@ -50,9 +50,9 @@ export async function createAgent(): Promise<ReturnType<typeof createReactAgent>
     const memory = new MemorySaver();
 
     // Initialize Agent
-    const canUseFaucet = walletProvider.getNetwork().networkId == "base-sepolia";
-    const faucetMessage = `If you ever need funds, you can request them from the faucet.`;
-    const cantUseFaucetMessage = `If you need funds, you can provide your wallet details and request funds from the user.`;
+    // const canUseFaucet = walletProvider.getNetwork().networkId == "base-sepolia";
+    // const faucetMessage = `If you ever need funds, you can request them from the faucet.`;
+    // const cantUseFaucetMessage = `If you need funds, you can provide your wallet details and request funds from the user.`;
     agent = createReactAgent({
       llm,
       tools,
