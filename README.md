@@ -42,6 +42,48 @@ Action Providers define what your agent can do. You can use built-in providers o
 
 ---
 
+## Create a Smart Contract Agent
+
+<img src="images/create-smart-contract.jpg" alt="image" width="1085"/>
+
+## Create an Automated Trading Agent
+
+<img src="images/automated-trading-agent.jpg" alt="image" width="1085"/>
+
+## Marketting Agent with ERC20 tokens
+
+<img src="images/marketting-agent.jpg" alt="image" width="1085"/>
+
+## Hedge Fund - ERC20 tokens with 1 million supply
+
+<img src="images/HedgeFund.jpg" alt="image" width="1085"/>
+
+## Owner's address is having responsibility to distribute tokens
+
+<img src="images/specific-number-of-tokens.jpg" alt="image" width="1085"/>
+
+## Token Address
+
+<img src="images/token-address-generated.jpg" alt="image" width="1085"/>
+
+## Token Contract
+
+<img src="images/token-contract.jpg" alt="image" width="1085"/>
+
+## Token Holders
+
+<img src="images/token-holders.jpg" alt="image" width="1085"/>
+
+## Token Information
+
+<img src="images/token-information.jpg" alt="image" width="1085"/>
+
+## Create a Smart Contract Agent with Voice 
+
+<img src="images/voice-recording.mp4" type="video/mp4"/>
+
+---
+
 ## Next Steps
 
 - Explore the AgentKit README: [AgentKit Documentation](https://github.com/coinbase/agentkit)
