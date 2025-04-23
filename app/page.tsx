@@ -111,7 +111,7 @@ export default function Home() {
     <div className="flex flex-col flex-grow items-center justify-center text-black dark:text-white w-full h-full">
       <div className="w-full max-w-2xl h-[70vh] bg-white dark:bg-gray-800 shadow-lg rounded-lg p-4 flex flex-col">
         {/* Chat Messages */}
-        <p> hello {input} </p>
+        {/* <p> hello {input} </p> */}
         <div className="flex-grow overflow-y-auto space-y-3 p-2">
           {messages.length === 0 ? (
             <p className="text-center text-gray-500">Start chatting with AgentKit...</p>
