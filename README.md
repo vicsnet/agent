@@ -80,7 +80,11 @@ Action Providers define what your agent can do. You can use built-in providers o
 
 ## Create a Smart Contract Agent with Voice 
 
-<video controls><source src="images/voice-recording.mp4" type="video/mp4"/></video>
+<html>
+    <body>
+        <video controls><source src="images/voice-recording.mp4" type="video/mp4"/></video>
+    </body>
+</html>
 
 ---
 
